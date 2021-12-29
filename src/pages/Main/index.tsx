@@ -1,15 +1,15 @@
 import ButtonMain from "../../components/ButtonMain";
-import ContainerMain from "../../components/Container";
 import NavBar from "../../components/NavBar";
-import { Container } from "./styles";
+import { Container, MainContent } from "./styles";
 
 const Main = () => {
   return (
     <Container>
       <NavBar />
-      <ContainerMain>
-        <ButtonMain text="pedido" />
-      </ContainerMain>
+      <MainContent>
+        <ButtonMain text="caixa" link="/caixa" />
+        <ButtonMain text="pedido" link="/pedidos" />
+      </MainContent>
     </Container>
   );
 };

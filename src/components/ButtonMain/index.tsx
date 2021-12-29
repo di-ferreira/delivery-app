@@ -1,15 +1,16 @@
 import React from "react";
 
-import { Container } from "./styles";
+import { Container, Texto } from "./styles";
 
 interface iButtonMain {
   text: string;
+  link: string;
 }
 
-const ButtonMain: React.FC<iButtonMain> = ({ text }) => {
+const ButtonMain: React.FC<iButtonMain> = ({ text, link }) => {
   return (
-    <Container>
-      <p>{text}</p>
+    <Container to={link}>
+      <Texto>{text}</Texto>
     </Container>
   );
 };

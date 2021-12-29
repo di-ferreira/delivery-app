@@ -5,7 +5,7 @@ export const Container = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 98.6vw;
   height: 5rem;
   border-radius: 0.6rem;
   overflow: hidden;
