@@ -1,11 +1,14 @@
 import NavBar from "../../components/NavBar";
-import { Container } from "./styles";
+import TableData from "../../components/TableData";
+import { Container, MainContent } from "./styles";
 
 const Pedidos = () => {
   return (
     <Container>
       <NavBar />
-      <h1>Pedidos</h1>
+      <MainContent>
+        <TableData />
+      </MainContent>
     </Container>
   );
 };

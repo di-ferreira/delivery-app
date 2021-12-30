@@ -71,7 +71,7 @@ const NavBar = () => {
         <Data>{format(date, "dd/MM/yyyy")}</Data>
         <Hora>
           {dateTime.hours}:
-          {dateTime.minutes > 0 && dateTime.minutes < 9
+          {dateTime.minutes > 0 && dateTime.minutes <= 9
             ? "0" + dateTime.minutes
             : dateTime.minutes}
         </Hora>
