@@ -7,6 +7,7 @@ export const colors = {
   green: "#20c937",
   yellow: "#c7ba28",
   white: "#FAFAFA",
+  gray: "#AAA",
   whiteGray: "230,230,230",
   blackRgb: "0, 0, 0",
 };

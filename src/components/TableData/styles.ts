@@ -5,7 +5,6 @@ export const Container = styled.div`
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  background-color: gray;
 `;
 
 export const Table = styled.table`

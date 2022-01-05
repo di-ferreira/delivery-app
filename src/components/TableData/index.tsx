@@ -1,5 +1,6 @@
 import React from "react";
-
+import Button from "../Button";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import {
   Container,
   Table,
@@ -13,7 +14,14 @@ const TableData: React.FC = () => {
   return (
     <Container>
       <TableTools>
-        <button>Novo Pedido</button>
+        <Button
+          Icon={faPlus}
+          Size={"lg"}
+          Rounded={true}
+          Type="success"
+          Title="Adicionar Pedido"
+          onclick={() => console.log("pedido adicionado")}
+        />
       </TableTools>
       <Table>
         <TableHeader>
