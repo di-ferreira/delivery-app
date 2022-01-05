@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../colors";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export type iButtonType = "default" | "success" | "warn" | "danger";
 
 interface isButton {
@@ -11,18 +11,23 @@ interface isButton {
 export const Container = styled.button<isButton>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   cursor: pointer;
   color: ${colors.white};
   border: none;
-  padding: 0.35rem 0.4rem;
-  border-radius: ${(props) => (props.rounded ? "50%" : 0)};
+  padding: ${(props) =>
+    props.rounded ? "0.25rem 0.3rem" : "0.1rem 0.5rem 0.1rem 0.3rem"};
+  border-radius: ${(props) => (props.rounded ? "50%" : "0.2rem")};
   background-color: ${(props) =>
     props.typeButton === "danger"
       ? colors.red
       : props.typeButton === "warn"
-      ? colors.yellow
+      ? colors.warn
       : props.typeButton === "success"
       ? colors.green
       : colors.gray};
+`;
+
+export const IconButton = styled(FontAwesomeIcon)`
+  margin: 0.5rem;
 `;

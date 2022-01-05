@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import {
   Container,
   Table,
@@ -8,9 +9,51 @@ import {
   TableContent,
   TableTools,
   TableRow,
+  TableColumn,
 } from "./styles";
 
+interface iTableData {
+  columTitles: string[];
+  resultData: any[];
+}
+
 const TableData: React.FC = () => {
+  const [data, setData] = useState<iTableData>({
+    resultData: [
+      {
+        codigo: "DF301221",
+        data: "30/12/2021",
+        nome: "Diego Ferreira",
+        status: "Na Fila",
+      },
+      {
+        codigo: "PV301221",
+        data: "30/12/2021",
+        nome: "Priscila Vieira",
+        status: "Pronto",
+      },
+      {
+        codigo: "AF301221",
+        data: "30/12/2021",
+        nome: "Aquiles Ferreira",
+        status: "Em Transito",
+      },
+      {
+        codigo: "CF301221",
+        data: "30/12/2021",
+        nome: "Celine Ferreira",
+        status: "Entregue",
+      },
+      {
+        codigo: "TS301221",
+        data: "30/12/2021",
+        nome: "Teste da Silva",
+        status: "Cancelado",
+      },
+    ],
+    columTitles: ["Cod.", "Data", "Nome", "Status", "Ações"],
+  });
+
   return (
     <Container>
       <TableTools>
@@ -26,54 +69,35 @@ const TableData: React.FC = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <th>Cod.</th>
-            <th>Data</th>
-            <th>Nome</th>
-            <th>Status</th>
-            <th>Ações</th>
+            {data?.columTitles.map((t: string, index) => (
+              <th key={index}>{t}</th>
+            ))}
           </TableRow>
         </TableHeader>
+
         <TableContent>
-          <TableRow>
-            <td>DF301221</td>
-            <td>30/12/2021</td>
-            <td>Diego Ferreira</td>
-            <td>Na Fila</td>
-            <td>
-              <button>Editar</button>
-              <button>Cancelar</button>
-            </td>
-          </TableRow>
-          <TableRow>
-            <td>PV301221</td>
-            <td>30/12/2021</td>
-            <td>Priscila Vieira</td>
-            <td>Pronto</td>
-            <td>
-              <button>Editar</button>
-              <button>Cancelar</button>
-            </td>
-          </TableRow>
-          <TableRow>
-            <td>AF301221</td>
-            <td>30/12/2021</td>
-            <td>Aquiles Ferreira</td>
-            <td>Em Transito</td>
-            <td>
-              <button>Editar</button>
-              <button>Cancelar</button>
-            </td>
-          </TableRow>
-          <TableRow>
-            <td>CF301221</td>
-            <td>30/12/2021</td>
-            <td>Celine Ferreira</td>
-            <td>Entregue</td>
-            <td>
-              <button>Editar</button>
-              <button>Cancelar</button>
-            </td>
-          </TableRow>
+          {data.resultData.map((d, index) => (
+            <TableRow key={index}>
+              <TableColumn>{d.codigo}</TableColumn>
+              <TableColumn>{d.data}</TableColumn>
+              <TableColumn>{d.nome}</TableColumn>
+              <TableColumn>{d.status}</TableColumn>
+              <TableColumn action={true}>
+                <Button
+                  Text="Editar"
+                  Icon={faEdit}
+                  onclick={() => {}}
+                  Type="warn"
+                />
+                <Button
+                  Text="Cancelar"
+                  Icon={faTimes}
+                  onclick={() => {}}
+                  Type="danger"
+                />
+              </TableColumn>
+            </TableRow>
+          ))}
         </TableContent>
       </Table>
     </Container>

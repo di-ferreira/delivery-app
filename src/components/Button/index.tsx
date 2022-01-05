@@ -1,8 +1,7 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
 
-import { Container, iButtonType } from "./styles";
+import { Container, iButtonType, IconButton } from "./styles";
 
 interface iButton {
   Text?: string;
@@ -30,7 +29,7 @@ const Button: React.FC<iButton> = ({
       title={Title}
       onClick={() => onclick()}
     >
-      {Icon && <FontAwesomeIcon icon={Icon} size={Size} />}
+      {Icon && <IconButton icon={Icon} size={Size} />}
       {Text && <span>{Text}</span>}
     </Container>
   );
