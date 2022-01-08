@@ -15,6 +15,7 @@ export const Container = styled.button<isButton>`
   cursor: pointer;
   color: ${colors.white};
   border: none;
+  opacity: 1;
   padding: ${(props) =>
     props.rounded ? "0.25rem 0.3rem" : "0.1rem 0.5rem 0.1rem 0.3rem"};
   border-radius: ${(props) => (props.rounded ? "50%" : "0.2rem")};
@@ -26,6 +27,11 @@ export const Container = styled.button<isButton>`
       : props.typeButton === "success"
       ? colors.green
       : colors.gray};
+  transition: opacity ease 0.5s;
+  &:hover {
+    transition: opacity ease 0.5s;
+    opacity: 0.7;
+  }
 `;
 
 export const IconButton = styled(FontAwesomeIcon)`

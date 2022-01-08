@@ -60,7 +60,7 @@ const TableData: React.FC = () => {
         <Button
           Icon={faPlus}
           Size={"lg"}
-          Rounded={true}
+          Text="Novo"
           Type="success"
           Title="Adicionar Pedido"
           onclick={() => console.log("pedido adicionado")}
