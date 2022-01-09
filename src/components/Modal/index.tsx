@@ -1,11 +1,22 @@
-import React from 'react';
+import React from "react";
 
-import { Container } from './styles';
+import { ButtonClose, Container } from "./styles";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Modal: React.FC = () => {
+interface iModal {
+  children?: React.ReactNode;
+  show?: boolean;
+  close: () => void;
+}
+
+const Modal: React.FC<iModal> = ({ children, show, close }) => {
   return (
-    <Container>
-      <h1>Modal</h1>
+    <Container show={show}>
+      <ButtonClose onClick={() => close()}>
+        <FontAwesomeIcon icon={faTimes} size={"2x"} />
+      </ButtonClose>
+      {children}
     </Container>
   );
 };

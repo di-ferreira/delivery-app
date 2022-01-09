@@ -11,10 +11,18 @@ import {
   TableRow,
   TableColumn,
 } from "./styles";
+import Modal from "../Modal";
 
 interface iTableData {
   columTitles: string[];
   resultData: any[];
+}
+interface iPedido {
+  codigo: string;
+  data: Date;
+  nome: string;
+  status: string;
+  obs: string;
 }
 
 const TableData: React.FC = () => {
@@ -53,9 +61,24 @@ const TableData: React.FC = () => {
     ],
     columTitles: ["Cod.", "Data", "Nome", "Status", "Ações"],
   });
+  const [pedido, setPedido] = useState<iPedido>({} as iPedido);
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const editPedido = (p: iPedido) => {
+    console.log("EditPedido", p.codigo);
+    setShowModal(true);
+    setPedido(p);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <Container>
+      <Modal show={showModal} close={closeModal}>
+        <h1>{pedido.codigo}</h1>
+      </Modal>
       <TableTools>
         <Button
           Icon={faPlus}
@@ -76,17 +99,17 @@ const TableData: React.FC = () => {
         </TableHeader>
 
         <TableContent>
-          {data.resultData.map((d, index) => (
+          {data.resultData.map((p, index) => (
             <TableRow key={index}>
-              <TableColumn>{d.codigo}</TableColumn>
-              <TableColumn>{d.data}</TableColumn>
-              <TableColumn>{d.nome}</TableColumn>
-              <TableColumn>{d.status}</TableColumn>
+              <TableColumn>{p.codigo}</TableColumn>
+              <TableColumn>{p.data}</TableColumn>
+              <TableColumn>{p.nome}</TableColumn>
+              <TableColumn>{p.status}</TableColumn>
               <TableColumn action={true}>
                 <Button
                   Text="Editar"
                   Icon={faEdit}
-                  onclick={() => {}}
+                  onclick={() => editPedido(p)}
                   Type="warn"
                 />
                 <Button
