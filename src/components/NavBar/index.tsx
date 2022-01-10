@@ -1,5 +1,7 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { useContext, useEffect, useState } from "react";
+import NavbarStore from "../../stores/NavbarStore";
 import NavBarButton from "../NavBarButton";
 import { Container, LeftSide, RightSide, Hora, Dia, Data } from "./styles";
 
@@ -20,14 +22,9 @@ const NavBar = () => {
     day: date.getDay(),
     fullDate: date.getFullYear(),
   });
-  const [buttons, setButtons] = useState([
-    { text: "home", active: true, link: "/" },
-    { text: "caixa", active: false, link: "/caixa" },
-    { text: "pedidos", active: false, link: "/pedidos" },
-    { text: "cardápio", active: false, link: "/cardapio" },
-    { text: "whatsapp", active: false, link: "/chat" },
-    { text: "configurações", active: false, link: "/config" },
-  ]);
+
+  const NavbarButtons = useContext(NavbarStore);
+  const { allButtons, toggleActiveButton } = NavbarButtons;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -42,23 +39,12 @@ const NavBar = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const activedButton = (text: string) => {
-    let newButtons = buttons.map((b) => {
-      if (b.text === text) {
-        b.active = true;
-      } else {
-        b.active = false;
-      }
-      return b;
-    });
-    setButtons(newButtons);
-  };
   return (
     <Container>
       <LeftSide>
-        {buttons.map((button, index) => (
+        {allButtons.buttons.map((button, index) => (
           <NavBarButton
-            onclick={() => activedButton(button.text)}
+            onclick={() => toggleActiveButton(button.text)}
             key={index}
             text={button.text}
             active={button.active}
@@ -80,4 +66,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default observer(NavBar);
