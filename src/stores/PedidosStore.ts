@@ -65,7 +65,13 @@ class PedidosStore {
   };
 
   deletePedido = (pedido: iPedido) => {
-    this.pedidos = this.pedidos.filter((p) => p.codigo !== pedido.codigo);
+    this.pedidos = this.pedidos.map((p) => {
+      if (p.codigo === pedido.codigo) {
+        p.status = "cancelado";
+        return p;
+      }
+      return p;
+    });
   };
 
   get Pedidos() {

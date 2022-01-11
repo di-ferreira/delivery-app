@@ -1,13 +1,15 @@
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
+import Button from "../../components/Button";
 import EditForm from "../../components/EditForm";
 import NavBar from "../../components/NavBar";
 import TableData from "../../components/TableData";
 import PedidosStore from "../../stores/PedidosStore";
-import { Container, MainContent } from "./styles";
+import { Container, MainContent, TableTools } from "./styles";
 
 const Pedidos = () => {
   const allPedidos = useContext(PedidosStore);
-  const { deletePedido, editPedido, newPedido, pedidos } = allPedidos;
+  const { deletePedido, newPedido, pedidos } = allPedidos;
   const titleColumns: string[] = ["Cód.", "Data", "Nome", "Status", "Ações"];
   const [showEdit, setShowEdit] = useState<boolean>(false);
 
@@ -22,6 +24,16 @@ const Pedidos = () => {
   return (
     <Container>
       <NavBar />
+      <TableTools>
+        <Button
+          Icon={faPlus}
+          Size={"lg"}
+          Text="Novo"
+          Type="success"
+          Title="Adicionar Pedido"
+          onclick={() => console.log("pedido add")}
+        />
+      </TableTools>
       <MainContent>
         <TableData
           columTitles={titleColumns}

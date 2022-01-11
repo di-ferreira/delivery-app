@@ -44,10 +44,3 @@ export const TableRow = styled.tr`
   background-color: ${colors.componentColor};
   box-shadow: 0px 1px 1px 1px rgba(${colors.blackRgb}, 0.3);
 `;
-
-export const TableTools = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0.5rem;
-`;

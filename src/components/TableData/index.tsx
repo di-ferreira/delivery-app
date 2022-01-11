@@ -1,13 +1,12 @@
 import React from "react";
 import { iTableData } from "../../@types";
-import { faPlus, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
 import {
   Container,
   Table,
   TableHeader,
   TableContent,
-  TableTools,
   TableRow,
   TableColumn,
 } from "./styles";
@@ -22,16 +21,6 @@ const TableData: React.FC<iTableData> = ({
 }) => {
   return (
     <Container>
-      <TableTools>
-        <Button
-          Icon={faPlus}
-          Size={"lg"}
-          Text="Novo"
-          Type="success"
-          Title="Adicionar Pedido"
-          onclick={() => console.log("pedido add")}
-        />
-      </TableTools>
       <Table>
         <TableHeader>
           <TableRow>
