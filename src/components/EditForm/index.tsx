@@ -1,16 +1,16 @@
 import React from "react";
 
-import { ButtonClose, Container } from "./styles";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ButtonClose, Container } from "./styles";
 
-interface iModal {
+interface iEditForm {
   children?: React.ReactNode;
   show?: boolean;
   close: () => void;
 }
 
-const Modal: React.FC<iModal> = ({ children, show, close }) => {
+const EditForm: React.FC<iEditForm> = ({ children, show, close }) => {
   return (
     <Container show={show}>
       <ButtonClose onClick={() => close()}>
@@ -21,4 +21,4 @@ const Modal: React.FC<iModal> = ({ children, show, close }) => {
   );
 };
 
-export default Modal;
+export default EditForm;

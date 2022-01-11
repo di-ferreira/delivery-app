@@ -10,10 +10,12 @@ export const Container = styled.div<iModalStyle>`
   position: absolute;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 50%;
   height: 100%;
   border-radius: 0.4rem;
   background-color: rgba(${colors.blackRgb}, 0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 export const ButtonClose = styled.button`

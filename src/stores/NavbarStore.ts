@@ -1,11 +1,6 @@
 import { createContext } from "react";
 import { action, makeObservable, observable, computed } from "mobx";
-
-interface iNavButtons {
-  text: string;
-  active: boolean;
-  link: string;
-}
+import { iNavButtons } from "../@types";
 
 class NavbarStore {
   buttons: iNavButtons[] = [
