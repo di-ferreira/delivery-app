@@ -1,23 +1,26 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
+import { iPedido } from "../../@types";
 import Button from "../../components/Button";
 import EditForm from "../../components/EditForm";
 import NavBar from "../../components/NavBar";
 import TableData from "../../components/TableData";
 import PedidosStore from "../../stores/PedidosStore";
-import { Container, MainContent, TableTools } from "./styles";
+import { Container, MainContent, TableTools, RowForm } from "./styles";
 
 const Pedidos = () => {
   const allPedidos = useContext(PedidosStore);
   const { deletePedido, newPedido, pedidos } = allPedidos;
   const titleColumns: string[] = ["Cód.", "Data", "Nome", "Status", "Ações"];
   const [showEdit, setShowEdit] = useState<boolean>(false);
+  const [pedido, setPedido] = useState<iPedido>({} as iPedido);
 
   const closeForm = () => {
     setShowEdit(false);
   };
 
-  const editForm = () => {
+  const editForm = (p: iPedido) => {
+    setPedido(p);
     setShowEdit(true);
   };
 
@@ -44,16 +47,25 @@ const Pedidos = () => {
           editAction={editForm}
         />
         <EditForm close={closeForm} show={showEdit}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <RowForm align="center">
+            <h1>{pedido.codigo}</h1>
+          </RowForm>
+          <RowForm>
+            Cliente:
+            <strong>{pedido.nome}</strong>
+          </RowForm>
+          <RowForm>
+            Cliente:
+            <strong>{pedido.nome}</strong>
+          </RowForm>
+          <RowForm>
+            Cliente:
+            <strong>{pedido.nome}</strong>
+          </RowForm>
+          <RowForm>
+            Cliente:
+            <strong>{pedido.nome}</strong>
+          </RowForm>
         </EditForm>
       </MainContent>
     </Container>

@@ -8,10 +8,13 @@ interface iModalStyle {
 export const Container = styled.div<iModalStyle>`
   display: ${(props) => (props.show ? "flex" : "none")};
   position: relative;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50%;
   height: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   margin: 0 0 0 0.5rem;
   border-radius: 0.4rem;
   overflow-x: hidden;

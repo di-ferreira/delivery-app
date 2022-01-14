@@ -2,6 +2,7 @@ import React from "react";
 import { iTableData } from "../../@types";
 import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
+import Pronto from "../../assets/images/pronto.svg";
 import {
   Container,
   Table,
@@ -36,7 +37,11 @@ const TableData: React.FC<iTableData> = ({
               <TableColumn>{p.codigo}</TableColumn>
               <TableColumn>{p.data}</TableColumn>
               <TableColumn>{p.nome}</TableColumn>
-              <TableColumn>{p.status}</TableColumn>
+              <TableColumn>
+                {p.status === "pronto" ? (
+                  <img src={Pronto} alt="Pronto" title="Pronto" />
+                ) : null}
+              </TableColumn>
               {actionColumn && (
                 <TableColumn action={true}>
                   <Button

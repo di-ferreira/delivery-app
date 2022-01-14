@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface iRow {
+  align?: string;
+}
+
 export const Container = styled.div`
   position: relative;
 `;
@@ -16,4 +20,12 @@ export const TableTools = styled.div`
   align-items: center;
   width: 100%;
   padding: 0.5rem;
+`;
+
+export const RowForm = styled.div<iRow>`
+  display: flex;
+  align-items: center;
+  justify-content: ${(props) => props.align};
+  width: 100%;
+  height: 2.5rem;
 `;
