@@ -33,7 +33,7 @@ const TableData: React.FC<iTableData> = ({
 
         <TableContent>
           {resultData.map((p, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} onClick={() => editAction(p)} hover={true}>
               <TableColumn>{p.codigo}</TableColumn>
               <TableColumn>{p.data}</TableColumn>
               <TableColumn>{p.nome}</TableColumn>

@@ -4,6 +4,9 @@ import { colors } from "../../colors";
 interface iColumn {
   action?: boolean;
 }
+interface iRow {
+  hover?: boolean;
+}
 
 export const Container = styled.div`
   width: 100%;
@@ -39,8 +42,13 @@ export const TableColumn = styled.td<iColumn>`
   font-size: 0.9rem;
 `;
 
-export const TableRow = styled.tr`
+export const TableRow = styled.tr<iRow>`
+  cursor: ${(props) => (props.hover ? "pointer" : "default")};
   height: 2.5rem;
   background-color: ${colors.componentColor};
   box-shadow: 0px 1px 1px 1px rgba(${colors.blackRgb}, 0.3);
+  &:hover {
+    background-color: ${(props) =>
+      props.hover ? colors.componentColorHover : colors.componentColor};
+  }
 `;
